@@ -11,7 +11,7 @@ void SysInit() {
   _nop_();
   _nop_();
   _nop_();
-  SELFCK = 1;
+  SELFCK = 1; //将系统时钟源选择设置为快时钟
   _nop_();
   _nop_();
   _nop_();

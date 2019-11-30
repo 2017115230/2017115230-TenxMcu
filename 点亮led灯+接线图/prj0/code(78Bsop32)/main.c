@@ -5,7 +5,7 @@ void main() {
   SysInit();
   VarsInit();
   while (1) {
-    F_turnOnWDT();
+    F_turnOnWDT(); //使能看门狗
     // user coding
     F_ledOff();
     delayMs(500);
@@ -14,6 +14,7 @@ void main() {
   }
 }
 //=============================================================================
+//延时函数
 void delayMs(uint16_t msCount) {
   uint16_t i, j;
   for (i = 0; i < msCount; i++) {

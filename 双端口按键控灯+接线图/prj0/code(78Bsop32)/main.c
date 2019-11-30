@@ -2,10 +2,10 @@
 #include "includeAll.h"
 //=============================================================================
 void main() {
-  SysInit();   //初始化
+  SysInit();
   VarsInit();
   while (1) {
-    F_turnOnWDT(); //开看门狗
+    F_turnOnWDT();
     // user coding
     F_ledOff();
     delayMs(500);
@@ -14,7 +14,6 @@ void main() {
   }
 }
 //=============================================================================
-//延时函数
 void delayMs(uint16_t msCount) {
   uint16_t i, j;
   for (i = 0; i < msCount; i++) {

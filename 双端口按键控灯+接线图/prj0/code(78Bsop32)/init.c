@@ -2,7 +2,6 @@
 #include "includeAll.h"
 //=============================================================================
 void SysInit() {
-  F_clearWDT();
   //时钟初始化
   CLKCON = 0x03; // Clock div 1
   STPPCK = 0;
@@ -12,7 +11,7 @@ void SysInit() {
   _nop_();
   _nop_();
   _nop_();
-  SELFCK = 1;
+  SELFCK = 1;   //将系统时钟设置为快时钟
   _nop_();
   _nop_();
   _nop_();

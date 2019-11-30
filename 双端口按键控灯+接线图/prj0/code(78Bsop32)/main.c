@@ -12,14 +12,10 @@ void main() {
     //喂狗
     F_clearWDT();
     // user coding
-    // F_ledOff();
-    // delayMs(500);
-    // F_ledOn();
-    // delayMs(500);
     delayMs(20);
     GetKeys();
     if (D_keyValue1 == keyValue) {
-      F_ledNeg();
+      F_ledNeg();  //按键每按一次led则取反
     }
     keyValue = D_keyNull;
   }

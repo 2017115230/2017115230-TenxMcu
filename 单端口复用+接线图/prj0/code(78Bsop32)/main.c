@@ -13,7 +13,7 @@ void main() {
     TimeProcess();
     TaskSetting();
     TaskProcess();
-    DisplayProcess();
+    // DisplayProcess();
   }
 }
 //=============================================================================
@@ -35,6 +35,13 @@ void TimeProcess() {
   if (second >= D_1000ms) {
     // 1s 执行一次
     second = 0;
+    vData = 0;
+  }
+  vData +=gData;
+  if (vData > 100) {
+    F_ledOn();
+  } else {
+    F_ledOff();
   }
 }
 //=============================================================================

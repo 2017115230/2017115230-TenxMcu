@@ -6,9 +6,11 @@
 #define D_keyNull 0
 #define D_keyValue1 1
 #define D_keyValue2 2
+
 // Globle Var -----------------------------------------
 #ifdef __keys_c
 uint8_t keyValue;
+//uint8_t lastKeyValue;
 #else
 extern uint8_t keyValue;
 #endif

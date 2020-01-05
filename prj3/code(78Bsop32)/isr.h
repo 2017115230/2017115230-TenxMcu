@@ -7,12 +7,13 @@
 // Globle Var -----------------------------------------
 #ifdef __isr_c
 bit b1ms;
+volatile uint8_t vData;
+//uint8_t vData;
+uint8_t gData;
+uint8_t time = 0;
 #else
 extern bit b1ms;
-#endif
-
-// Action Macro: exp: #define F_getData() ------
-
-// Function ------------------------------------
-
+extern volatile uint8_t vData;
+//extern uint8_t vData;
+extern uint8_t gData;
 #endif

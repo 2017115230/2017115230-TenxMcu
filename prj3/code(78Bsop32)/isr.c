@@ -1,7 +1,4 @@
 //=============================================================================
-// Name		:isr.c
-// Purpose	:Interrupt Service Routines
-//=============================================================================
 #define __isr_c
 
 #include "includeAll.h"
@@ -25,6 +22,14 @@ void INT0_int(void) interrupt 0 {
 void TIMER0_int(void) interrupt 1 {
   TF0 = 0; // clear interrupt flag
   //------------
+	time++;//1ms
+	F_buzz();
+	if(time == 50)
+	{
+		//p1_5 = 1;
+		time = 0;
+		TR0 = 0;
+	}
 }
 //=============================================================================
 // Function:	void INT1_int(void)
@@ -67,6 +72,10 @@ void UART_int(void) interrupt 4 {
 void TIMER2_int(void) interrupt 5 {
   TF2 = 0; // clear interrupt flag
   b1ms = 1;
+  vData++;
+  if (vData == 0xff) {
+    vData = 0;
+  }
 }
 //=============================================================================
 // Function:	void TIMER3_int(void)
@@ -75,7 +84,7 @@ void TIMER2_int(void) interrupt 5 {
 // OutPut:	none
 // Author:
 //=============================================================================
-void TIMER3_int(void) interrupt 7 {  INTFLG &= ~TF3; }
+void TIMER3_int(void) interrupt 7 { INTFLG &= ~TF3; }
 //=============================================================================
 // Function:	void P1_int(void)
 // Purpose:	P1 pin interrupt vector
@@ -83,7 +92,7 @@ void TIMER3_int(void) interrupt 7 {  INTFLG &= ~TF3; }
 // OutPut:	none
 // Author:
 //=============================================================================
-void P1_int(void) interrupt 8 {  INTFLG &= ~P1IF; }
+void P1_int(void) interrupt 8 { INTFLG &= ~P1IF; }
 //=============================================================================
 // Function:	void INT2_int(void)
 // Purpose:	INT2 pin interrupt vector
@@ -91,7 +100,7 @@ void P1_int(void) interrupt 8 {  INTFLG &= ~P1IF; }
 // OutPut:	none
 // Author:
 //=============================================================================
-void INT2_int(void) interrupt 9 {  INTFLG &= ~IE2; }
+void INT2_int(void) interrupt 9 { INTFLG &= ~IE2; }
 //=============================================================================
 // Function:	void ADC_TK_int(void)
 // Purpose:	ADC&TOUCHKEY interrupt vector
@@ -100,7 +109,8 @@ void INT2_int(void) interrupt 9 {  INTFLG &= ~IE2; }
 // Author:
 //=============================================================================
 void ADC_TK_int(void) interrupt 10 {
-   INTFLG &= ~ADIF;
-   INTFLG &= ~TKIF;
+  INTFLG &= ~ADIF;
+  INTFLG &= ~TKIF;
   TKCON2 &= ~TKAUTO; // disable touch key auto scan
 }
+
